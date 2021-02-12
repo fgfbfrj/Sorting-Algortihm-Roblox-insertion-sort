@@ -1,0 +1,47 @@
+
+function sort (z) 
+	while wait(5) do
+		for x = 1,z do
+			--take myself
+			wait()
+			local me = script.Parent.Parts:FindFirstChild(tostring(x))
+			if me then
+				me.BrickColor = BrickColor.Red()
+				for x = tonumber(me.Name),z do
+					local you = script.Parent.Parts:FindFirstChild(tostring(x))
+					if you then
+						local v = me.interior.Value
+						local v3 = v
+						local v2 = you.interior.Value
+						you.BrickColor = BrickColor.Red()
+            --changing "<" with ">" will not change too much but you can try
+						if v > v2 or v == v2 then
+							me.Size = Vector3.new(1,v2,1)
+							you.Size = Vector3.new(1,v,1)
+							me.interior.Value = (0 + v2)
+							you.interior.Value = (0 + v3)
+
+						elseif v < v2 then
+
+						end
+					end
+
+				end
+				me.BrickColor = BrickColor.new("Lime green")
+			end
+		end
+	end
+end
+local z = 1000
+for x = 1,z do
+	local part = Instance.new("Part",script.Parent.Parts)
+	local value = Instance.new("IntValue")
+	value.Value = math.random(1,1000)
+	value.Parent = part
+	value.Name = "interior"
+	part.Anchored = true
+	part.Position = Vector3.new(x,0,1)
+	part.Name = part.Position.X
+	part.Size = Vector3.new(1,value.Value ,1)
+end
+sort(z)
