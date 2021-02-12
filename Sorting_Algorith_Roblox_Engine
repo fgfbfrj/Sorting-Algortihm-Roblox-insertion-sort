@@ -1,14 +1,18 @@
-
+--Parts is an Instance in workspace you should create but if you want also enjoy learning from my code :)
+local parts = Instance.new("Folder")
+parts.Parent = Script.Parent 
+parts.Name = "Parts"
 function sort (z) 
 	while wait(5) do
 		for x = 1,z do
-			--take myself
+			--take myself part
 			wait()
-			local me = script.Parent.Parts:FindFirstChild(tostring(x))
+			local me = parts:FindFirstChild(tostring(x))
 			if me then
 				me.BrickColor = BrickColor.Red()
+				--taking neighbouring part with me variable from parts
 				for x = tonumber(me.Name),z do
-					local you = script.Parent.Parts:FindFirstChild(tostring(x))
+					local you = parts:FindFirstChild(tostring(x))
 					if you then
 						local v = me.interior.Value
 						local v3 = v
@@ -34,7 +38,7 @@ function sort (z)
 end
 local z = 1000
 for x = 1,z do
-	local part = Instance.new("Part",script.Parent.Parts)
+	local part = Instance.new("Part",parts)
 	local value = Instance.new("IntValue")
 	value.Value = math.random(1,1000)
 	value.Parent = part
